@@ -1,0 +1,345 @@
+@import '_variables.scss';
+@import '_fonts.scss';
+@import '_mixins.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: orange;
+  font-family: Roboto, sans-serif;
+}
+
+main {
+  margin: auto;
+  height: 100vh;
+  padding: 0 30px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.index {
+  color: white;
+  font-size: 22px;
+
+  a.button {
+    text-decoration: none;
+
+    padding: 14px 20px;
+    @include button-props;
+  }
+}
+
+.row {
+  flex-shrink: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--column-gap, 10px);
+  row-gap: var(--row-gap, 0);
+  box-sizing: border-box;
+}
+
+.col {
+  flex-shrink: 0;
+  grid-column-start: var(--start, 0);
+  grid-column-end: span var(--size, 12);
+  min-height: 0;
+  min-width: 0;
+}
+
+.line {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 562px;
+  margin-left: 30px;
+}
+
+label.input {
+  letter-spacing: -0.1px;
+
+  input,
+  select {
+    width: 100%;
+    background-color: $input-background;
+    color: $input-color;
+    padding: 23px $input-padding-left 9px;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    border-radius: $border-radius;
+    box-shadow: $input-shadow 0 2px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &.error {
+      outline: 2px solid deeppink;
+    }
+  }
+
+  &.perversed {
+    input {
+      padding: 25px $input-padding-left 7px;
+    }
+
+    .label {
+      transform: translateY(8px) translateX($input-padding-left);
+    }
+  }
+
+  input::placeholder {
+    color: $input-placeholder;
+    font-weight: 500;
+  }
+
+  .label {
+    max-width: 200px;
+    color: $input-label;
+    position: absolute;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.3px;
+    transform: translateY(6px) translateX($input-padding-left);
+  }
+
+  .question-mark-icon {
+    position: absolute;
+
+    &::before {
+      position: absolute;
+      right: 0;
+      padding: 16px 13px;
+      font-size: 20px;
+      color: $gainsboro;
+      pointer-events: none;
+    }
+  }
+}
+
+i.icon {
+  position: absolute;
+
+  &::before {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+  }
+}
+
+.checkout-form {
+  width: 1024px;
+  height: 646px;
+  background-color: $checkout-background;
+  padding-left: 87px;
+  padding-top: 13px;
+
+  h5 {
+    display: flex;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 27px;
+    text-transform: uppercase;
+    word-spacing: -2px;
+    letter-spacing: 0.85px;
+
+    .circle {
+      position: absolute;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 2px;
+        right: 10px;
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    i {
+      padding: 6px 16px;
+      color: $icon-lock;
+    }
+  }
+
+  .group-1 {
+    .heading {
+      h5 .circle::before {
+        background: url('../svg/number-one.svg') center / contain no-repeat;
+      }
+    }
+
+    .content {
+      display: flex;
+      padding-top: 15px;
+
+      .personal-information {
+        width: 562px;
+      }
+
+      .chevron {
+        position: absolute;
+
+        &::before {
+          position: absolute;
+          right: 0;
+          padding: 20px 17px;
+          font-size: 12px;
+          color: $darkCharcoal;
+          pointer-events: none;
+        }
+      }
+    }
+
+    .totals {
+      width: 275px;
+      height: 265px;
+      color: $totals-color;
+      font-weight: 500;
+      letter-spacing: 0;
+      background-color: $total-background-color;
+      margin-left: 12px;
+      border-radius: $border-radius;
+      padding: 5px;
+
+      > * {
+        width: 100%;
+        height: 100%;
+        border: 1px dashed $totals-dashed-line-color;
+        border-radius: $border-radius;
+        padding: 8px 12px 0 13px;
+
+        h5 {
+          font-size: 11px;
+          letter-spacing: 1.2px;
+        }
+
+        .order {
+          font-size: 12px;
+
+          :nth-child(2n) {
+            text-align: right;
+          }
+
+          &.details {
+            padding-top: 9px;
+          }
+
+          &.summary {
+            padding-top: 13px;
+            letter-spacing: -0.1px;
+          }
+
+          &.total {
+            padding-top: 13px;
+            font-weight: bold;
+
+            :nth-child(2n) {
+              font-size: 22px;
+            }
+          }
+        }
+
+        .details-divider {
+          padding-top: 24px;
+        }
+
+        .summary-divider {
+          padding-top: 15px;
+        }
+
+        hr {
+          border: 0;
+          height: 1px;
+
+          &.details {
+            border-top: 1px dashed #dcdcdc;
+          }
+
+          &.summary {
+            border: none;
+            height: 0.15em;
+            background: $brightGray;
+            background: repeating-linear-gradient(
+              90deg,
+              $brightGray,
+              $brightGray 3px,
+              transparent 1px,
+              transparent 6px
+            );
+          }
+        }
+      }
+    }
+  }
+
+  .group-2 {
+    padding-top: 33px;
+
+    .heading {
+      display: flex;
+
+      h5 {
+        .circle::before {
+          background: url('../svg/number-two.svg') center / contain no-repeat;
+        }
+
+        .lock-icon {
+          position: relative;
+
+          &::before {
+            top: 6px;
+            left: 8px;
+            width: 12px;
+            height: 12px;
+            background: url('../svg/lock.svg') center / contain no-repeat;
+          }
+        }
+      }
+    }
+
+    .details {
+      width: 562px;
+      padding-top: 16px;
+
+      .visa-icon::before {
+        top: 11px;
+        right: 15px;
+        width: 38px;
+        height: 30px;
+        background: url('../svg/visa-icon.svg') center / contain no-repeat;
+      }
+    }
+  }
+
+  .complete-purchase {
+    padding-top: 21px;
+
+    button {
+      width: 100%;
+      height: 50px;
+      font-size: 13px;
+      padding-top: 3px;
+
+      @include button-props;
+
+      i.shopping-cart {
+        position: relative;
+        margin-right: 14px;
+
+        &::before {
+          top: -4px;
+          right: -9px;
+          width: 20px;
+          height: 20px;
+          background: url('../svg/shopping-cart.svg') center / contain no-repeat;
+        }
+      }
+    }
+  }
+}

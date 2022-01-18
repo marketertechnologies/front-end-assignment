@@ -1,0 +1,39 @@
+// names reference https://www.color-name.com/
+$white: #ffffff; // input background, button color
+$antiFlashWhite: #f2f2f2; // form background
+$black: #000000; // all headings, totals
+$spanishGray: #9b9b9b; // placeholder
+$davysGray: #515356; // label
+$darkCharcoal: #333333; // dropdown selected, input
+$platinum: #e2e2e2; // visa icon border
+$catalaniaBlue: #14186d; // VISA logo
+$alienArmpit: #6bd401; // button background
+$kellyGreen: #5db603; // button shadow
+$gainsboro: #dcdcdc; // border and dashed line 1 on totlas
+$brightGray: #ededed; // dashed line 2 on totals
+$outerSpace: #484848; // lock icon
+
+// component specific values
+$checkout-background: $antiFlashWhite;
+
+$input-background: $white;
+$input-color: $darkCharcoal;
+$input-label: $davysGray;
+$input-placeholder: $spanishGray;
+$input-padding-left: 11px;
+$input-shadow: $platinum;
+
+$button-background: $alienArmpit;
+$button-color: $white;
+$button-shadow: $kellyGreen;
+
+$heading-color: $black;
+
+$totals-color: $black;
+$total-background-color: $white;
+$totals-dashed-line-color: $gainsboro;
+
+$icon-lock: $outerSpace;
+
+// generic values
+$border-radius: 3px;

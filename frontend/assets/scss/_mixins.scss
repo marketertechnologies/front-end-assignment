@@ -1,0 +1,11 @@
+@mixin button-props {
+  background-color: $button-background;
+  color: $button-color;
+  border: none;
+  outline: none;
+  border-radius: $border-radius;
+  font-weight: bold;
+  letter-spacing: 0.1px;
+  text-transform: uppercase;
+  box-shadow: $button-shadow 0 2px;
+}

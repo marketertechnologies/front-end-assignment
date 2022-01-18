@@ -2,7 +2,14 @@
 @set('title', 'Home page')
 
 @section('body')
-  @!component('components/welcome', {
-    source: 'resources/views/index.edge'
-  })
+  @if(cart)
+    @!component('components/order-form', { cart })
+    @entryPointScripts('app')
+  @else
+  <div class="index">
+    <a class="button" href="/bacon">More Bacon</a>
+    or
+    <a class="button" href="/checkout">Checkout</a>
+  </div>
+  @endif
 @end
