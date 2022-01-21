@@ -25,12 +25,24 @@ main {
 .index {
   color: white;
   font-size: 22px;
+}
 
-  a.button {
-    text-decoration: none;
+a.button {
+  text-decoration: none;
 
-    padding: 14px 20px;
-    @include button-props;
+  padding: 14px 20px;
+  text-align: center;
+  @include button-props;
+}
+
+.success {
+  color: $white;
+  font-size: 22px;
+  display: flex;
+  flex-direction: column;
+
+  .message {
+    padding-top: 30px;
   }
 }
 

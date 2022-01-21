@@ -1,5 +1,5 @@
 @layout('layouts/main')
-@set('title', 'Home page')
+@set('title', (cart && 'Checkout') || 'Home page')
 
 @section('body')
   @if(cart)
