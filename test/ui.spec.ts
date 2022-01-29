@@ -38,12 +38,25 @@ test.group('Index page', () => {
   )
 })
 
-test.group('Checkout page', async () => {
+test.group('Checkout page', (group) => {
   const headingsCases: TestCase[] = [
     ['Personal information', ['.circle'], 'number icon'],
     ['Payments details', ['.circle', '.lock-icon'], 'number and lock icons'],
   ]
-  const { document } = await getPage('/checkout')
+  let document: Document
+  let details: HTMLElement[][]
+
+  group.before(async () => {
+    const window = await getPage('/checkout')
+    document = window.document
+    const labels = Array.prototype.slice.call(
+      document.querySelectorAll('.order div:nth-child(odd)')
+    )
+    const prices = Array.prototype.slice.call(
+      document.querySelectorAll('.order div:nth-child(even)')
+    )
+    details = labels.map((label, index) => [label, prices[index]])
+  })
 
   testWithCases(
     t`Heading "${0}" is present and has ${2}`,
@@ -235,23 +248,15 @@ test.group('Checkout page', async () => {
     'Total',
   ]
   const detailsPrices = ['$ 580', '$ 380', '$ 960.00', '$ 0', '$ 960']
-  const labels = Array.prototype.slice.call(
-    document.querySelectorAll('.order div:nth-child(odd)')
-  )
-  const prices = Array.prototype.slice.call(
-    document.querySelectorAll('.order div:nth-child(even)')
-  )
-  const details = labels.map((label, index) => [label, prices[index]])
 
-  for (const [label, price] of details) {
-    const labelText = label.innerHTML
-    const priceText = price.innerHTML
-
-    test(`"${labelText}" and ${priceText} are present`, (assert) => {
+  test(`Order details are present`, (assert) => {
+    for (const [label, price] of details) {
+      const labelText = label.innerHTML
+      const priceText = price.innerHTML
       assert.isTrue(detailsLabels.includes(labelText))
       assert.isTrue(detailsPrices.includes(priceText))
-    })
-  }
+    }
+  })
 
   test('Checkout button is present and has icon', (assert) => {
     const btn = document.querySelector(
