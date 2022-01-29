@@ -1,10 +1,10 @@
-const isString = (str) => !!(typeof str === 'string' && str.trim())
+export const isString = (str) => !!(typeof str === 'string' && str.trim())
 
-const isAlfabethic = (str) => /^[a-zA-Z]{50}$/.test(str)
+export const isAlphabetic = (str) => /^[a-zA-Z]{0,50}$/.test(str)
 
-export const validateFirstname = (str) => isString(str) && isAlfabethic(str)
+export const validateFirstname = (str) => isString(str) && isAlphabetic(str)
 
-export const validateLastname = (str) => isString(str) && isAlfabethic(str)
+export const validateLastname = (str) => isString(str) && isAlphabetic(str)
 
 export const validateEmail = (email) =>
   // eslint-disable-next-line max-len
@@ -22,4 +22,5 @@ export const validateCreditCard = (card) => /^[0-9]{16}$/.test(card)
 
 export const validateCVV = (cvv) => /^[0-9]{3}$/.test(cvv)
 
-export const validateExpDate = (expDate) => /^[0-9]{2}\/[0-9]{2}$/.test(expDate)
+export const validateExpDate = (expDate) =>
+  /^[0-1]{1}[1-2]{1}\/[0-9]{2}$/.test(expDate)

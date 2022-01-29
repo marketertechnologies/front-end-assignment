@@ -19,8 +19,7 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
-import { schema, rules } from '@ioc:Adonis/Core/Validator'
-import View from '@ioc:Adonis/Core/View'
+import { rules, schema } from '@ioc:Adonis/Core/Validator'
 
 Route.get('/', async ({ view }) => {
   return view.render('index')

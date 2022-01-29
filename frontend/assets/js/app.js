@@ -19,7 +19,7 @@ const getElement = (selector) => document.querySelector(selector) || {}
 const getValue = (element) => element.value
 const validate = (broadcaster) => (selector) => (validator) => () => {
   const element = getElement(selector)
-  console.log(element)
+
   return broadcaster(
     () => validator(getValue(element)),
     () => {
