@@ -132,6 +132,27 @@ label.input {
       pointer-events: none;
     }
   }
+
+  .chevron {
+    position: absolute;
+
+    &::before {
+      position: absolute;
+      right: 0;
+      padding: 20px 17px;
+      font-size: 12px;
+      color: $darkCharcoal;
+      pointer-events: none;
+    }
+  }
+
+  .visa-icon::before {
+    top: 11px;
+    right: 15px;
+    width: 38px;
+    height: 30px;
+    background: url('../svg/visa-icon.svg') center / contain no-repeat;
+  }
 }
 
 i.icon {
@@ -142,196 +163,111 @@ i.icon {
     position: absolute;
     pointer-events: none;
   }
+
+  &.lock-icon {
+    position: relative;
+
+    &::before {
+      top: 6px;
+      left: 8px;
+      width: 12px;
+      height: 12px;
+      background: url('../svg/lock.svg') center / contain no-repeat;
+    }
+  }
 }
 
-.checkout-form {
-  width: 1024px;
-  height: 646px;
+.checkout {
+  max-width: 1024px;
   background-color: $checkout-background;
-  padding-left: 87px;
-  padding-top: 13px;
+  padding: 13px 87px 38px;
+  display: grid;
+  column-gap: 12px;
+  grid-template-columns: minmax(100px, 562px) minmax(100px, 275px);
+  grid-template-rows: 43px 297px 44px 160px auto;
+  grid-template-areas:
+    'personal-h  ......'
+    'personal    totals'
+    'payment-h   totals'
+    'payment     totals'
+    'complete    totals';
 
-  h5 {
-    display: flex;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 27px;
-    text-transform: uppercase;
-    word-spacing: -2px;
-    letter-spacing: 0.85px;
-
-    .circle {
-      position: absolute;
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 2px;
-        right: 10px;
-        width: 20px;
-        height: 20px;
-      }
-    }
-
-    i {
-      padding: 6px 16px;
-      color: $icon-lock;
-    }
+  .personal-information-heading {
+    grid-area: personal-h;
   }
 
-  .group-1 {
-    .heading {
-      h5 .circle::before {
-        background: url('../svg/number-one.svg') center / contain no-repeat;
-      }
-    }
-
-    .content {
-      display: flex;
-      padding-top: 15px;
-
-      .personal-information {
-        width: 562px;
-      }
-
-      .chevron {
-        position: absolute;
-
-        &::before {
-          position: absolute;
-          right: 0;
-          padding: 20px 17px;
-          font-size: 12px;
-          color: $darkCharcoal;
-          pointer-events: none;
-        }
-      }
-    }
-
-    .totals {
-      width: 275px;
-      height: 265px;
-      color: $totals-color;
-      font-weight: 500;
-      letter-spacing: 0;
-      background-color: $total-background-color;
-      margin-left: 12px;
-      border-radius: $border-radius;
-      padding: 5px;
-
-      > * {
-        width: 100%;
-        height: 100%;
-        border: 1px dashed $totals-dashed-line-color;
-        border-radius: $border-radius;
-        padding: 8px 12px 0 13px;
-
-        h5 {
-          font-size: 11px;
-          letter-spacing: 1.2px;
-        }
-
-        .order {
-          font-size: 12px;
-
-          :nth-child(2n) {
-            text-align: right;
-          }
-
-          &.details {
-            padding-top: 9px;
-          }
-
-          &.summary {
-            padding-top: 13px;
-            letter-spacing: -0.1px;
-          }
-
-          &.total {
-            padding-top: 13px;
-            font-weight: bold;
-
-            :nth-child(2n) {
-              font-size: 22px;
-            }
-          }
-        }
-
-        .details-divider {
-          padding-top: 24px;
-        }
-
-        .summary-divider {
-          padding-top: 15px;
-        }
-
-        hr {
-          border: 0;
-          height: 1px;
-
-          &.details {
-            border-top: 1px dashed #dcdcdc;
-          }
-
-          &.summary {
-            border: none;
-            height: 0.15em;
-            background: $brightGray;
-            background: repeating-linear-gradient(
-              90deg,
-              $brightGray,
-              $brightGray 3px,
-              transparent 1px,
-              transparent 6px
-            );
-          }
-        }
-      }
-    }
+  .personal-information {
+    grid-area: personal;
   }
 
-  .group-2 {
-    padding-top: 33px;
+  .payment-details-heading {
+    grid-area: payment-h;
+  }
 
-    .heading {
-      display: flex;
+  .payment-details {
+    grid-area: payment;
+  }
 
-      h5 {
-        .circle::before {
-          background: url('../svg/number-two.svg') center / contain no-repeat;
-        }
-
-        .lock-icon {
-          position: relative;
-
-          &::before {
-            top: 6px;
-            left: 8px;
-            width: 12px;
-            height: 12px;
-            background: url('../svg/lock.svg') center / contain no-repeat;
-          }
-        }
-      }
-    }
-
-    .details {
-      width: 562px;
-      padding-top: 16px;
-
-      .visa-icon::before {
-        top: 11px;
-        right: 15px;
-        width: 38px;
-        height: 30px;
-        background: url('../svg/visa-icon.svg') center / contain no-repeat;
-      }
-    }
+  .totals {
+    grid-area: totals;
   }
 
   .complete-purchase {
-    padding-top: 21px;
+    grid-area: complete;
+  }
 
+  .personal-information-heading,
+  .payment-details-heading {
+    h5 {
+      display: flex;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 27px;
+      text-transform: uppercase;
+      word-spacing: -2px;
+      letter-spacing: 0.85px;
+
+      .circle {
+        position: absolute;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 2px;
+          right: 10px;
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      i {
+        padding: 6px 16px;
+        color: $icon-lock;
+      }
+
+      .number-one {
+        &.circle::before {
+          background: url('../svg/number-one.svg') center / contain no-repeat;
+        }
+      }
+
+      .number-two {
+        &.circle::before {
+          background: url('../svg/number-two.svg') center / contain no-repeat;
+        }
+      }
+    }
+  }
+
+  .personal-information {
+    padding-bottom: 37px;
+  }
+
+  .payment-details {
+    padding-bottom: 40px;
+  }
+
+  .complete-purchase {
     button {
       width: 100%;
       height: 50px;
@@ -350,6 +286,89 @@ i.icon {
           width: 20px;
           height: 20px;
           background: url('../svg/shopping-cart.svg') center / contain no-repeat;
+        }
+      }
+    }
+  }
+
+  .totals {
+    max-width: 275px;
+    height: max-content;
+    color: $totals-color;
+    font-weight: 500;
+    letter-spacing: 0;
+    background-color: $total-background-color;
+    border-radius: $border-radius;
+    padding: 5px;
+
+    > * {
+      width: 100%;
+      height: 100%;
+      border: 1px dashed $totals-dashed-line-color;
+      border-radius: $border-radius;
+      padding: 14px 12px 33px 13px;
+
+      h5 {
+        font-size: 11px;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        font-weight: bold;
+        padding-bottom: 7px;
+      }
+
+      .order {
+        font-size: 12px;
+
+        :nth-child(2n) {
+          text-align: right;
+        }
+
+        &.details {
+          padding-top: 9px;
+        }
+
+        &.summary {
+          padding-top: 13px;
+          letter-spacing: -0.1px;
+        }
+
+        &.total {
+          padding-top: 13px;
+          font-weight: bold;
+
+          :nth-child(2n) {
+            font-size: 22px;
+          }
+        }
+      }
+
+      .details-divider {
+        padding-top: 24px;
+      }
+
+      .summary-divider {
+        padding-top: 15px;
+      }
+
+      hr {
+        border: 0;
+        height: 1px;
+
+        &.details {
+          border-top: 1px dashed #dcdcdc;
+        }
+
+        &.summary {
+          border: none;
+          height: 0.15em;
+          background: $brightGray;
+          background: repeating-linear-gradient(
+            90deg,
+            $brightGray,
+            $brightGray 3px,
+            transparent 1px,
+            transparent 6px
+          );
         }
       }
     }

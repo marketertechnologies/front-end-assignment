@@ -1,15 +1,10 @@
 @layout('layouts/main')
-@set('title', (cart && 'Checkout') || 'Home page')
+@set('title', 'Home page')
 
 @section('body')
-  @if(cart)
-    @!component('components/order-form', { cart })
-    @entryPointScripts('app')
-  @else
   <div class="index">
     <a class="button" href="/bacon">More Bacon</a>
     or
     <a class="button" href="/checkout">Checkout</a>
   </div>
-  @endif
 @end
