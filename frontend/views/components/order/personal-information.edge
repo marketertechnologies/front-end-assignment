@@ -1,5 +1,5 @@
-<div class="row personal-information" style="--row-gap: 20px">
-  <div class="col" style="--size: 6">
+<div class="row personal-information" style="--row-gap: 20px; --row-gap-xs: 10px">
+  <div class="col" style="--size: 6; --size-sm: 12">
     @!component('components/input', {
       id: 'firstname',
       name: 'firstName',
@@ -8,7 +8,7 @@
       className: 'perversed',
     })
   </div>
-  <div class="col" style="--size: 6">
+  <div class="col" style="--size: 6; --size-sm: 12">
     @!component('components/input', {
       id: 'lastname',
       name: 'lastName',
@@ -26,7 +26,7 @@
       placeholder: 'elon@spacex.com',
     })
   </div>
-  <div class="col" style="--size: 6">
+  <div class="col" style="--size: 6; --size-xs: 12">
     @!component('components/dropdown', {
       id: 'country',
       name: 'country',
@@ -38,7 +38,7 @@
       ],
     })
   </div>
-  <div class="col" style="--size: 6">
+  <div class="col" style="--size: 6; --size-xs: 12">
     @!component('components/input', {
       id: 'postalcode',
       name: 'postalCode',
