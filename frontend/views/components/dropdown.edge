@@ -1,0 +1,9 @@
+<label for={{id}} class="input">
+  <div class="label">{{label}}</div>
+  <select {{ $props.serializeExcept(['label', 'options']) }} form="order-form">
+    @each(option in options)
+      <option value="{{option.value}}">{{ option.label }}</option>
+    @endeach
+  </select>
+  <i class="fas fa-chevron-down chevron"></i>
+</label>

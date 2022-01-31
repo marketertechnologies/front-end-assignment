@@ -1,0 +1,57 @@
+<div class="row personal-information" style="--row-gap: 20px; --row-gap-xs: 10px">
+  <div class="col" style="--size: 6; --size-sm: 12">
+    @!component('components/input', {
+      id: 'firstname',
+      name: 'firstName',
+      label: 'First name',
+      placeholder: 'Elon',
+      className: 'perversed',
+    })
+  </div>
+  <div class="col" style="--size: 6; --size-sm: 12">
+    @!component('components/input', {
+      id: 'lastname',
+      name: 'lastName',
+      label: 'Last name',
+      placeholder: 'Musk',
+      className: 'perversed',
+    })
+  </div>
+  <div class="col">
+    @!component('components/input', {
+      id: 'email',
+      name: 'email',
+      type: 'email',
+      label: 'Email',
+      placeholder: 'elon@spacex.com',
+    })
+  </div>
+  <div class="col" style="--size: 6; --size-xs: 12">
+    @!component('components/dropdown', {
+      id: 'country',
+      name: 'country',
+      label: 'Contry',
+      options: [
+        {value: 'US', label: 'United States'},
+        { value: 'RU', label: 'Russia' },
+        { value: 'CH', label: 'China' },
+      ],
+    })
+  </div>
+  <div class="col" style="--size: 6; --size-xs: 12">
+    @!component('components/input', {
+      id: 'postalcode',
+      name: 'postalCode',
+      label: 'Postal Code',
+      placeholder: '10001',
+    })
+  </div>
+  <div class="col">
+    @!component('components/input', {
+      id: 'phone',
+      name: 'phone',
+      label: 'Phone Number',
+      placeholder: '(212) 692-93-92',
+    })
+  </div>
+</div>

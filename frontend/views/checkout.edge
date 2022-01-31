@@ -1,0 +1,7 @@
+@layout('layouts/main')
+@set('title', 'Checkout')
+
+@section('body')
+  @!component('components/order/form', { cart })
+  @entryPointScripts('app')
+@end

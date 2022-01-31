@@ -1,0 +1,35 @@
+<div class="totals">
+  <div class="row">
+    <div class="col">
+      <h5>Your order</h5>
+    </div>
+    <div class="col">
+      <div class="row order details" style="--row-gap: 13px">
+        @each(item in cart.items)
+          <div class="col" style="--size: 8">{{ item.name }}</div>
+          <div class="col" style="--size: 4">$ {{ item.price }}</div>
+        @end
+      </div>
+    </div>
+    <div class="col details-divider">
+      <hr class="details">
+    </div>
+    <div class="col">
+      <div class="row order summary" style="--row-gap: 14px;">
+        <div class="col" style="--size: 8">Total purchases</div>
+        <div class="col" style="--size: 4">$ {{ cart.totals.subTotal }}.00</div>
+        <div class="col" style="--size: 8">Estimated tax</div>
+        <div class="col" style="--size: 4">$ {{ cart.totals.tax }}</div>
+      </div>
+    </div>
+    <div class="col summary-divider">
+      <hr class="summary">
+    </div>
+    <div class="col">
+      <div class="row order total">
+        <div class="col" style="--size: 8">Total</div>
+        <div class="col" style="--size: 4">$ {{ cart.totals.grandTotal }}</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,7 +2,10 @@
 @set('title', 'Bacon factory')
 
 @section('body')
-  @!component('snowdog/bacon', {
-    img: '/images/bacon.jpg'
-  })
+  <div class="bacon">
+    @!component('snowdog/bacon', {
+      img: '/images/bacon.jpg'
+    })
+  </div>
+  @entryPointScripts('bacon')
 @end

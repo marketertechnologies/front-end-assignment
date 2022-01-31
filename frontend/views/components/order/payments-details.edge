@@ -1,0 +1,31 @@
+
+<div class="row payment-details" style="--row-gap: 20px; --row-gap-xs: 10px">
+  <div class="col">
+    @component('components/input', {
+      id: 'creditcard',
+      name: 'creditCard',
+      label: 'Credit Card Number',
+      placeholder: '0000 \u2013 0000 \u2013 0000 \u2013 0000'
+    })
+      <i class="icon visa-icon"></i>
+    @end
+  </div>
+  <div class="col" style="--size: 6">
+    @component('components/input', {
+      id: 'cvv',
+      name: 'CVV',
+      label: 'Security code',
+      placeholder: '***'
+    })
+      <i class="far fa-question-circle question-mark-icon"></i>
+    @end
+  </div>
+  <div class="col" style="--size: 6">
+    @!component('components/input', {
+      id: 'expdate',
+      name: 'expDate',
+      label: 'Expiration date',
+      placeholder: 'MM / YY'
+    })
+  </div>
+</div>

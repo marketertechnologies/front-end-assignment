@@ -1,0 +1,5 @@
+<label for={{id}} class="{{ 'input ' + (className || '') }}">
+  <div class="label">{{label}}</div>
+  <input {{ $props.serializeExcept(['label', 'className']) }} form="order-form">
+  {{{ await $slots.main() }}}
+</label>
