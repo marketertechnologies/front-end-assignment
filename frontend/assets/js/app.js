@@ -3,6 +3,7 @@ import '@fortawesome/fontawesome-free/css/regular.css'
 import '@fortawesome/fontawesome-free/css/solid.css'
 import '../scss/app.scss'
 import { errorBroadcaster } from './broadcasters'
+import { keydownListener } from './listeners'
 import {
   validateCountry,
   validateCreditCard,
@@ -17,6 +18,11 @@ import {
 
 const getElement = (selector) => document.querySelector(selector) || {}
 const getValue = (element) => element.value
+
+const getInputBroadcaster = (eventType) => (listener) => (input) => {
+  input.addEventListener(eventType, listener)
+}
+
 const validate = (broadcaster) => (selector) => (validator) => () => {
   const element = getElement(selector)
 
@@ -24,21 +30,22 @@ const validate = (broadcaster) => (selector) => (validator) => () => {
     () => validator(getValue(element)),
     () => {
       element.classList.add('error')
+      element.focus()
     }
   )
 }
-const getValidator = validate(errorBroadcaster)
+const getValueValidator = validate(errorBroadcaster)
 
 const validators = [
-  getValidator('#firstname')(validateFirstname),
-  getValidator('#lastname')(validateLastname),
-  getValidator('#email')(validateEmail),
-  getValidator('#country')(validateCountry),
-  getValidator('#postalcode')(validatePostalCode),
-  getValidator('#phone')(validatePhone),
-  getValidator('#creditcard')(validateCreditCard),
-  getValidator('#cvv')(validateCVV),
-  getValidator('#expdate')(validateExpDate),
+  getValueValidator('#firstname')(validateFirstname),
+  getValueValidator('#lastname')(validateLastname),
+  getValueValidator('#email')(validateEmail),
+  getValueValidator('#country')(validateCountry),
+  getValueValidator('#postalcode')(validatePostalCode),
+  getValueValidator('#phone')(validatePhone),
+  getValueValidator('#creditcard')(validateCreditCard),
+  getValueValidator('#cvv')(validateCVV),
+  getValueValidator('#expdate')(validateExpDate),
 ]
 
 const form = getElement('#order-form')
@@ -51,9 +58,8 @@ if (form) {
     })
   }
   formElements.forEach((input) => {
-    input.addEventListener('input', () => {
-      resetForm()
-    })
+    getInputBroadcaster('keydown')(keydownListener)(input)
+    getInputBroadcaster('input')(resetForm)(input)
   })
 
   form.onsubmit = (e) => {

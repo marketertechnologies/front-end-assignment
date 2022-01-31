@@ -249,7 +249,7 @@ test.group('Checkout page', (group) => {
   ]
   const detailsPrices = ['$ 580', '$ 380', '$ 960.00', '$ 0', '$ 960']
 
-  test(`Order details are present`, (assert) => {
+  test('Order details are present', (assert) => {
     for (const [label, price] of details) {
       const labelText = label.innerHTML
       const priceText = price.innerHTML

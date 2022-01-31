@@ -76,7 +76,28 @@ test.group('validateEmail', () => {
   const cases: TestCase[] = [
     ['use@exampl.com', true, 'well formed email'],
     ['user.name@example.com', true, 'email containing dot'],
-    ...commonCases,
+    ['user-name@example.com', true, 'email containing dash'],
+    [
+      'user-name@exa-mple.com',
+      true,
+      'email containing dash also in a host name',
+    ],
+    ['user_name@example.com', true, 'email containing underscore'],
+    ['user(name@example.com', false, 'email containing parenthesis'],
+    ['user<name@example.com', false, 'email containing left angle braket'],
+    ['user>name@example.com', false, 'email containing right angle bracket'],
+    ['user/name@example.com', false, 'email containing slash'],
+    ['user\name@example.com', false, 'email containing backslash'],
+    ['user#name@example.com', false, 'email containing hash'],
+    ['user$name@example.com', false, 'email containing dollar sign'],
+    ['user%name@example.com', false, 'email containing dollar percent'],
+    ['user%name@example.com', false, 'email containing dollar caret'],
+    ['user&name@example.com', false, 'email containing dollar ampersand'],
+    ['user*name@example.com', false, 'email containing dollar asterisc'],
+    ['user+name@example.com', false, 'email containing dollar plus'],
+    ['user~name@example.com', false, 'email containing dollar tilde'],
+    commonCasesMap.emptyString,
+    commonCasesMap.whitespace,
   ]
 
   testWithCases(...testBooleanFunction(validateEmail), cases)

@@ -7,10 +7,7 @@ export const validateFirstname = (str) => isString(str) && isAlphabetic(str)
 export const validateLastname = (str) => isString(str) && isAlphabetic(str)
 
 export const validateEmail = (email) =>
-  // eslint-disable-next-line max-len
-  /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-    email
-  )
+  /^(([a-zA-Z\.\-_0-9])+@)(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,})$/.test(email)
 
 export const validateCountry = (country) => isString(country)
 
